@@ -74,9 +74,32 @@
           "rust-analyzer"
         ];
       };
+      go = mkWelcomeText {
+        path = ./go;
+        name = "Go Template";
+        description = ''
+          A basic go application template.
+        '';
+        buildTools = [
+          "All essential go tools"
+          "gopls"
+        ];
+      };
+      dotnet = mkWelcomeText {
+        path = ./dotnet;
+        name = "Dotnet Template";
+        description = ''
+          A basic Dotnet application template.
+        '';
+        buildTools = [
+          "All essential dotnet tools"
+          "asp.net runtime"
+          "omnisharp"
+        ];
+      };
       bevy = mkWelcomeText {
         path = ./bevy;
-        name = "Rust Template";
+        name = "Rust bevy Template";
         description = ''
           A basic rust application template with a package build.
         '';
