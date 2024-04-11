@@ -30,7 +30,9 @@
           packages = with pkgs; [
             dotnet-sdk_8
             dotnet-aspnetcore_8
+            omnisharp-roslyn
           ];
+          OMNISHARP_PATH = "${pkgs.omnisharp-roslyn}/bin/OmniSharp";
         };
       });
     };
