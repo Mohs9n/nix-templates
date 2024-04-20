@@ -1,5 +1,5 @@
 {
-  description = "A Personal collection of flakes";
+  description = "A Personal collection of template flakes";
 
   outputs = {self}: let
     mkWelcomeText = {
@@ -16,42 +16,6 @@
       welcomeText = ''
         # ${name}
         ${description}
-
-        ${
-          if buildTools != null
-          then ''
-            Comes bundled with:
-            ${builtins.concatStringsSep ", " buildTools}
-          ''
-          else ""
-        }
-        ${
-          if additionalSetupInfo != null
-          then ''
-            ## Additional Setup
-            To set up the project run:
-            ```sh
-            flutter create .
-            ```
-          ''
-          else ""
-        }
-        ## Other tips
-        If you use direnv run:
-
-        ```
-            echo "use flake" > .envrc
-        ```
-
-        For a quick license setup use licensor:
-
-        ```
-            # SPDX is the license id like MIT or GPL-3.0
-            nix-shell -p licensor --command "licensor SPDX > LICENSE"
-        ```
-
-        ## More info
-        - [flake-utils Github Page](https://github.com/numtide/flake-utils)
       '';
     };
   in {
@@ -81,7 +45,7 @@
           A basic go application template.
         '';
         buildTools = [
-          "All essential go tools"
+          "go tools"
           "gopls"
         ];
       };
@@ -105,6 +69,17 @@
         '';
         buildTools = [
           "All essential rust tools"
+          "rust-analyzer"
+        ];
+      };
+      node = mkWelcomeText {
+        path = ./node;
+        name = "Nodejs Template";
+        description = ''
+          A basic nodejs application template with corepack.
+        '';
+        buildTools = [
+          "All essential nodejs tools"
           "rust-analyzer"
         ];
       };
